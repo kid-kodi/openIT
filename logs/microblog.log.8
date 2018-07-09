@@ -1,0 +1,128 @@
+2018-07-04 20:37:03,782 ERROR: Exception on /equipment/add [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kodi/Workspace/parky/app/routes.py", line 155, in add_equipment
+    return render_template('add_equipment.html', form=form)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kodi/Workspace/parky/app/templates/add_equipment.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/kodi/Workspace/parky/app/templates/base.html", line 36, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/kodi/Workspace/parky/app/templates/add_equipment.html", line 5, in block "content"
+    {{ wtf.quick_form(form) }}
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 205, in template
+    {{ form_field(field,
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 123, in template
+    {{field(class="form-control", **kwargs)|safe}}
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/wtforms/fields/core.py", line 155, in __call__
+    return self.meta.render_field(self, kwargs)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/wtforms/meta.py", line 56, in render_field
+    return field.widget(field, **render_kw)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/wtforms/widgets/core.py", line 323, in __call__
+    for val, label, selected in field.iter_choices():
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/wtforms/fields/core.py", line 454, in iter_choices
+    for value, label in self.choices:
+TypeError: 'Category' object is not iterable
+2018-07-04 20:37:48,511 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-04 20:37:52,705 ERROR: Exception on /equipment/add [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kodi/Workspace/parky/app/routes.py", line 155, in add_equipment
+    return render_template('add_equipment.html', form=form)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kodi/Workspace/parky/app/templates/add_equipment.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/kodi/Workspace/parky/app/templates/base.html", line 36, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/kodi/Workspace/parky/app/templates/add_equipment.html", line 5, in block "content"
+    {{ wtf.quick_form(form) }}
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 205, in template
+    {{ form_field(field,
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 123, in template
+    {{field(class="form-control", **kwargs)|safe}}
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/wtforms/fields/core.py", line 155, in __call__
+    return self.meta.render_field(self, kwargs)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/wtforms/meta.py", line 56, in render_field
+    return field.widget(field, **render_kw)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/wtforms/widgets/core.py", line 323, in __call__
+    for val, label, selected in field.iter_choices():
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/wtforms/fields/core.py", line 454, in iter_choices
+    for value, label in self.choices:
+TypeError: 'Category' object is not iterable
+2018-07-04 20:41:09,097 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-04 20:41:17,827 ERROR: Exception on /equipment/add [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kodi/Workspace/parky/app/routes.py", line 146, in add_equipment
+    form.category.choices = [(c.key.id(), c.name) for c in Category.query()]
+TypeError: 'BaseQuery' object is not callable
+2018-07-04 20:41:52,265 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]

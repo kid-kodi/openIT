@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <a href="{{ url_for('admin.index') }}">Dashboard</a>
+        <a href="{{ url_for('admin.category') }}">Categories de materiels</a>
+        <a href="{{ url_for('admin.label') }}">Marques de materiels</a>
+        <a href="{{ url_for('admin.service') }}">Service / Unité</a>
+    </div>
+    {% block admin_app %}{% endblock %}
+{% endblock %}

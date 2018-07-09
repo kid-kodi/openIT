@@ -1,0 +1,36 @@
+{% extends "home/index.html" %}
+
+{% block home_app %}
+    <h1>Interventions</h1>
+    <a href="{{ url_for('home.add_interview') }}">Nouveau</a>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Demandeur</th>
+                <th>Service</th>
+                <th>Description</th>
+                <th>Intervenant</th>
+                <th>Actions menées</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in list %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.requester}}</td>
+                <td>{{item.service}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.interviewer}}</td>
+                <td>{{item.actions}}</td>
+                <td>{{item.date}}</td>
+                <td>
+                    <a href="{{ url_for('home.detail_interview', id=item.id) }}">Detail</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "home/index.html" %}
+
+{% block home_app %}
+    <h1>{{equipment.name}}</h1>
+    <a href="{{ url_for('home.edit_equipment', id=equipment.id) }}">Modifier</a>
+    <div>
+    	<h3>Générale</h3>
+    	<div>
+    		<table>
+    			<tr>
+    				<td>Nom</td>
+    				<td>{{equipment.name}}</td>
+    			</tr>
+    			<tr>
+    				<td>Description</td>
+    				<td>{{equipment.description}}</td>
+    			</tr>
+    		</table>
+    	</div>
+    </div>
+{% endblock %}

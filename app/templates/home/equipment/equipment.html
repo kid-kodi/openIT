@@ -1,0 +1,32 @@
+{% extends "home/index.html" %}
+
+{% block home_app %}
+    <h1>Ordinateur</h1>
+    <a href="{{ url_for('home.add_equipment') }}">Nouveau</a>
+    <table id="tabl">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Catégorie</th>
+                <th>Marque</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in list %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.category.name}}</td>
+                <td>{{item.label.name}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                <td>
+                    <a href="{{ url_for('home.detail_equipment', id=item.id) }}">Detail</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "admin/index.html" %}
+
+{% block admin_app %}
+    <h1>Category</h1>
+    <a href="{{ url_for('admin.add_category') }}">Nouveau</a>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in list %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                <td>
+                    <a href="{{ url_for('admin.detail_category', id=item.id) }}">Detail</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
