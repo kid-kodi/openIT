@@ -1,21 +1,30 @@
-2018-07-04 20:29:57,378 ERROR: Exception on /category [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-07-05 02:55:23,674 ERROR: Exception on /equipment [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1791, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1774, in raise_routing_exception
+    raise request.routing_exception
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/ctx.py", line 336, in match_request
+    self.url_adapter.match(return_rule=True)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1581, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/kodi/Workspace/parky/app/routes.py", line 184, in category
-    return render_template('category.html', list=list)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1713, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1644, in handle_http_exception
+    return handler(e)
+  File "/home/kodi/Workspace/parky/app/errors/handlers.py", line 7, in not_found_error
+    return render_template('errors/404.html'), 404
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
@@ -28,12 +37,10 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/kodi/Workspace/parky/app/templates/category.html", line 1, in top-level template code
+  File "/home/kodi/Workspace/parky/app/templates/errors/404.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/home/kodi/Workspace/parky/app/templates/base.html", line 36, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/kodi/Workspace/parky/app/templates/category.html", line 5, in block "content"
-    <a href="{{ url_for('add_printer') }}">Nouveau</a>
+  File "/home/kodi/Workspace/parky/app/templates/base.html", line 20, in top-level template code
+    <a href="{{ url_for('category') }}">Categories de materiels</a>
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
@@ -44,9 +51,16 @@ Traceback (most recent call last):
     force_external=external)
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'add_printer'. Did you mean 'add_interview' instead?
-2018-07-04 20:32:29,178 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
-2018-07-04 20:33:20,790 ERROR: Exception on /equipment/add [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
+werkzeug.routing.BuildError: Could not build url for endpoint 'category'. Did you mean 'admin.category' instead?
+2018-07-05 03:06:30,742 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:61]
+2018-07-07 01:02:39,616 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:61]
+2018-07-07 01:03:46,028 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:61]
+2018-07-07 01:06:44,232 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:61]
+2018-07-07 01:07:21,863 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:61]
+2018-07-07 01:07:41,696 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:61]
+2018-07-07 01:08:17,748 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:61]
+2018-07-07 01:10:17,414 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:61]
+2018-07-07 01:10:26,106 ERROR: Exception on /admin/category [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -62,8 +76,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/kodi/Workspace/parky/app/routes.py", line 153, in add_equipment
-    return render_template('add_equipment.html', form=form)
+  File "/home/kodi/Workspace/parky/app/admin/routes.py", line 83, in category
+    return render_template('admin/category/category.html', list=list)
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
@@ -76,18 +90,25 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/kodi/Workspace/parky/app/templates/add_equipment.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/kodi/Workspace/parky/app/templates/base.html", line 36, in top-level template code
+  File "/home/kodi/Workspace/parky/app/templates/admin/category/category.html", line 1, in top-level template code
+    {% extends "admin/index.html" %}
+  File "/home/kodi/Workspace/parky/app/templates/admin/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/kodi/Workspace/parky/app/templates/base.html", line 35, in top-level template code
     {% block content %}{% endblock %}
-  File "/home/kodi/Workspace/parky/app/templates/add_equipment.html", line 5, in block "content"
-    {{ wtf.quick_form(form) }}
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
-    rv = self._func(*arguments)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 176, in template
-    {%- for field in form %}
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/wtforms/form.py", line 57, in __iter__
-    return iter(itervalues(self._fields))
-AttributeError: 'EquipmentForm' object has no attribute '_fields'
-2018-07-04 20:33:58,969 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
-2018-07-04 20:36:59,484 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+  File "/home/kodi/Workspace/parky/app/templates/admin/index.html", line 9, in block "content"
+    {% block admin_app %}{% endblock %}
+  File "/home/kodi/Workspace/parky/app/templates/admin/category/category.html", line 5, in block "admin_app"
+    <a href="{{ url_for('add_category') }}">Nouveau</a>
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'add_category'. Did you mean 'admin.add_category' instead?
+2018-07-07 01:11:11,150 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:61]

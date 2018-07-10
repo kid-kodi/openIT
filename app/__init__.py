@@ -16,7 +16,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
-login.login_view = 'login'
+login.login_view = 'auth.login'
 mail = Mail(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
@@ -34,7 +34,7 @@ from app.admin import bp as admin_bp
 app.register_blueprint(admin_bp, url_prefix='/admin')
 
 
-from app import routes, models
+from app import models
 
 if not app.debug:
     if app.config['MAIL_SERVER']:

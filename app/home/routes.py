@@ -2,7 +2,7 @@ from app import db
 from flask import render_template, flash, redirect, url_for
 from .forms import InterviewForm, OrderForm, EquipmentForm
 from flask_login import current_user, login_required
-from app.models import Interview, Order, Equipment, Category, Label
+from app.models import Interview, Order, Equipment, Category, Label, Service
 from datetime import datetime
 from . import bp
 
@@ -45,9 +45,11 @@ def add_equipment():
     form = EquipmentForm()
     form.category.choices = [(c.id, c.name) for c in Category.query.all()]
     form.label.choices = [(c.id, c.name) for c in Label.query.all()]
+    form.service.choices = [(c.id, c.name) for c in Service.query.all()]
     if form.validate_on_submit():
         equipment = Equipment(category_id=form.category.data,
                               label_id=form.label.data,
+                              service_id=form.service.data,
                               model=form.model.data,
                               serial=form.serial.data,
                               name=form.name.data,
@@ -55,7 +57,7 @@ def add_equipment():
         db.session.add(equipment)
         db.session.commit()
         flash('données enregistrées')
-        return redirect(url_for('equipment'))
+        return redirect(url_for('home.equipment'))
     return render_template('home/equipment/add_equipment.html', form=form)
 
 
@@ -66,18 +68,21 @@ def edit_equipment( id ):
     form = EquipmentForm(obj=equipment)
     form.category.choices = [(c.id, c.name) for c in Category.query.all()]
     form.label.choices = [(c.id, c.name) for c in Label.query.all()]
+    form.service.choices = [(c.id, c.name) for c in Service.query.all()]
     if form.validate_on_submit():
         equipment.category_id = form.category.data
         equipment.label_id = form.label.data
+        equipment.service_id = form.service.data
         equipment.model = form.model.data
         equipment.serial = form.serial.data
         equipment.name = form.name.data
         equipment.description = form.description.data
         db.session.commit()
         flash('données modifiées')
-        return redirect(url_for('equipment'))
+        return redirect(url_for('home.equipment'))
     form.category.data = equipment.category_id
     form.label.data = equipment.label_id
+    form.service.data = equipment.service_id
     form.model.data = equipment.model
     form.serial.data = equipment.serial
     form.name.data = equipment.name
@@ -104,9 +109,11 @@ def interview():
 @login_required
 def add_interview():
     form = InterviewForm()
+    form.service.choices = [(c.id, c.name) for c in Service.query.all()]
+    form.equipment.choices = [(c.id, c.name) for c in Equipment.query.all()]
     if form.validate_on_submit():
         interview = Interview(requester=form.requester.data,
-                              service=form.service.data,
+                              equipment_id=form.equipment.data,
                               description=form.description.data,
                               interviewer=form.interviewer.data,
                               actions=form.actions.data,
@@ -114,7 +121,7 @@ def add_interview():
         db.session.add(interview)
         db.session.commit()
         flash('données enregistrées')
-        return redirect(url_for('interview'))
+        return redirect(url_for('home.interview'))
     return render_template('home/interview/add_interview.html', form=form)
 
 
@@ -123,9 +130,11 @@ def add_interview():
 def edit_interview( id ):
     interview = Interview.query.get_or_404(id)
     form = InterviewForm(obj=interview)
+    form.service.choices = [(c.id, c.name) for c in Service.query.all()]
+    form.equipment.choices = [(c.id, c.name) for c in Equipment.query.all()]
     if form.validate_on_submit():
         interview.requester = form.requester.data
-        interview.service = form.service.data
+        interview.equipment_id = form.equipment.data
         interview.description = form.description.data
         interview.interviewer = form.interviewer.data
         interview.actions = form.actions.data
@@ -134,7 +143,7 @@ def edit_interview( id ):
         flash('données modifiées')
         return redirect(url_for('interview'))
     form.requester.data = interview.requester
-    form.service.data = interview.service
+    form.equipment.data = interview.equipment
     form.description.data = interview.description
     form.interviewer.data = interview.interviewer
     form.actions.data = interview.actions
@@ -171,7 +180,7 @@ def add_order():
         db.session.add(order)
         db.session.commit()
         flash('données enregistrées')
-        return redirect(url_for('order'))
+        return redirect(url_for('home.order'))
     return render_template('home/order/add_order.html', form=form)
 
 
@@ -189,7 +198,7 @@ def edit_order( id ):
         order.date = form.date.data
         db.session.commit()
         flash('données modifiées')
-        return redirect(url_for('order'))
+        return redirect(url_for('home.order'))
     form.requester.data = order.requester
     form.service.data = order.service
     form.description.data = order.description

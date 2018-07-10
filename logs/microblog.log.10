@@ -1,80 +1,4 @@
-2018-07-04 20:26:37,955 ERROR: Exception on /index [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: user
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1811, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2087, in preprocess_request
-    rv = func()
-  File "/home/kodi/Workspace/parky/app/routes.py", line 14, in before_request
-    if current_user.is_authenticated:
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/home/kodi/Workspace/parky/app/models.py", line 95, in load_user
-    return User.query.get(int(id))
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 923, in get
-    ident, loading.load_on_pk_identity)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 1006, in _get_impl
-    return db_load_fn(self, primary_key_identity)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
-    return q.one()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2947, in one
-    ret = self.one_or_none()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2917, in one_or_none
-    ret = list(self)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2988, in __iter__
-    return self._execute_and_instances(context)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3011, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
-    raise value.with_traceback(tb)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user [SQL: 'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen \nFROM user \nWHERE user.id = ?'] [parameters: (1,)] (Background on this error at: http://sqlalche.me/e/e3q8)
-2018-07-04 20:26:51,805 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
-2018-07-04 20:26:57,031 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
-2018-07-04 20:27:04,025 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
-2018-07-04 20:27:11,509 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
-2018-07-04 20:27:47,045 ERROR: Exception on /category [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-07-04 20:41:55,984 ERROR: Exception on /equipment/add [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -90,21 +14,72 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/kodi/Workspace/parky/app/routes.py", line 184, in category
-    return render_template('category.html', list=list)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/loaders.py", line 113, in load
-    source, filename, uptodate = self.get_source(environment, name)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 58, in get_source
-    return self._get_source_fast(environment, template)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 86, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: category.html
-2018-07-04 20:29:54,067 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+  File "/home/kodi/Workspace/parky/app/routes.py", line 146, in add_equipment
+    form.category.choices = [(c.key.id(), c.name) for c in Category.query.all()]
+  File "/home/kodi/Workspace/parky/app/routes.py", line 146, in <listcomp>
+    form.category.choices = [(c.key.id(), c.name) for c in Category.query.all()]
+AttributeError: 'Category' object has no attribute 'key'
+2018-07-04 20:42:31,171 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-04 20:53:18,567 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-04 20:53:38,789 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-04 20:53:55,933 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-04 20:54:02,443 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-04 20:54:16,760 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-04 20:56:12,883 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-05 00:23:00,675 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-05 00:23:06,528 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-05 00:23:16,222 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-05 00:23:22,412 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-05 00:24:31,179 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-05 00:28:29,925 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-05 00:29:05,881 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-05 00:29:58,882 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-05 00:30:53,471 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:52]
+2018-07-05 02:38:31,033 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:58]
+2018-07-05 02:38:42,357 ERROR: Exception on /label [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kodi/Workspace/parky/app/routes.py", line 143, in label
+    return render_template('label.html', list=list)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kodi/Workspace/parky/app/templates/label.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/kodi/Workspace/parky/app/templates/base.html", line 23, in top-level template code
+    <a href="{{ url_for('user', username=current_user.username) }}">{{current_user.username}}</a>
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'user' with values ['username']. Did you mean 'auth.user' instead?
+2018-07-05 02:43:53,509 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:58]
+2018-07-05 02:55:07,886 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:61]

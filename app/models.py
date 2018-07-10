@@ -84,6 +84,7 @@ class Equipment(db.Model):
     serial = db.Column(db.String(255))
     name = db.Column(db.String(120), index=True)
     description = db.Column(db.String(255))
+    interviews = db.relationship('Interview', backref='equipment', lazy='dynamic')
 
     def __repr__(self):
         return '<Equipment {}>'.format(self.name)
@@ -97,6 +98,7 @@ class Interview(db.Model):
     service = db.Column(db.String(255))
     interviewer = db.Column(db.String(255))
     actions = db.Column(db.String(255))
+    equipment_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
 
     def __repr__(self):
         return '<Interview {}>'.format(self.name)
