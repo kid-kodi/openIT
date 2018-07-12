@@ -18,17 +18,12 @@ def before_request():
 @bp.route('/index')
 @login_required
 def index():
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template('home/dashboard.html', title='Home', posts=posts)
+    interviews = Interview.query.all()
+    orders = Order.query.all()
+    equipments = Equipment.query.all()
+    return render_template('home/dashboard.html', interviews=interviews
+                           , orders=orders
+                           , equipments=equipments)
 
 
 #routes equipment
@@ -141,7 +136,7 @@ def edit_interview( id ):
         interview.date = form.date.data
         db.session.commit()
         flash('données modifiées')
-        return redirect(url_for('interview'))
+        return redirect(url_for('home.interview'))
     form.requester.data = interview.requester
     form.equipment.data = interview.equipment
     form.description.data = interview.description

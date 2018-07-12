@@ -1,11 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div>
-        <a href="{{ url_for('home.index') }}">Dashboard</a>
-        <a href="{{ url_for('home.interview') }}">Intervention</a>
-        <a href="{{ url_for('home.order') }}">Commande</a>
-        <a href="{{ url_for('home.equipment') }}">Materiels informatiques</a>
+    <div class="container">
+        <div class="row">
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home.index') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home.interview') }}">Intervention</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home.order') }}">Commande</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home.equipment') }}">Materiels informatiques</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row">
+            {% block home_app %}{% endblock %}
+        </div>
     </div>
-    {% block home_app %}{% endblock %}
 {% endblock %}

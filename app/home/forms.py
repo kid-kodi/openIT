@@ -9,8 +9,10 @@ class InterviewForm(FlaskForm):
     interviewer = StringField('Intervenant', validators=[DataRequired()])
     actions = TextAreaField('Actions effectuée', validators=[Length(min=0, max=140)])
     date = StringField('Date', validators=[DataRequired()])
-    service = SelectField(choices=[], coerce=int, label="Choisir une unité")
-    equipment = SelectField(choices=[], coerce=int, label="Choisir un equipement")
+    service = SelectField(choices=[], coerce=int, label="Choisir une unité", default=(0, 'Aucun'))
+    equipment = SelectField(choices=[], coerce=int, label="Choisir un equipement", default=(0, 'Aucun'))
+    status = SelectField(choices=[(0, 'Aucun'), (1, 'Oui'), (2, 'Non')],
+                         coerce=int, label="Statut de l'équipement", default=(0, 'Aucun'))
     submit = SubmitField('Enregistrer')
 
 

@@ -11,7 +11,13 @@ from . import bp
 @bp.route('/index')
 @login_required
 def index():
-    return render_template('admin/dashboard.html')
+    categories = Category.query.all()
+    labels = Label.query.all()
+    services = Service.query.all()
+    return render_template('admin/dashboard.html',
+                           categories=categories,
+                           labels=labels,
+                           services=services)
 
 
 #routes category

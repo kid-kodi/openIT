@@ -1,13 +1,4 @@
-2018-07-10 17:28:33,156 ERROR: Exception on /admin/service [GET] [in /home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
-    context)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 470, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: user
-
-The above exception was the direct cause of the following exception:
-
+2018-07-11 12:40:59,795 ERROR: Exception on /interview/add [GET] [in /home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -21,60 +12,53 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 226, in decorated_view
-    elif not current_user.is_authenticated:
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 302, in _get_user
-    current_app.login_manager._load_user()
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 317, in _load_user
-    return self.reload_user()
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 279, in reload_user
-    user = self.user_callback(user_id)
-  File "/home/kodi/Workspace/parky/app/models.py", line 120, in load_user
-    return User.query.get(int(id))
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 864, in get
-    return self._get_impl(ident, loading.load_on_ident)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 897, in _get_impl
-    return fallback_fn(self, key)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 223, in load_on_ident
-    return q.one()
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2814, in one
-    ret = self.one_or_none()
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2784, in one_or_none
-    ret = list(self)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2855, in __iter__
-    return self._execute_and_instances(context)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2878, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 945, in execute
-    return meth(self, multiparams, params)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 263, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1053, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1189, in _execute_context
-    context)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1402, in _handle_dbapi_exception
-    exc_info
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kodi/Workspace/parky/app/home/routes.py", line 125, in add_interview
+    return render_template('home/interview/add_interview.html', form=form)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
-    context)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 470, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user [SQL: 'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen \nFROM user \nWHERE user.id = ?'] [parameters: (1,)]
-2018-07-10 17:29:02,203 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:65]
-2018-07-10 17:29:11,703 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:65]
-2018-07-10 17:29:19,837 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:65]
-2018-07-10 17:29:29,043 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:65]
-2018-07-10 17:29:42,585 ERROR: Exception on /admin/service [GET] [in /home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py:1560]
+  File "/home/kodi/Workspace/parky/app/templates/home/interview/add_interview.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/kodi/Workspace/parky/app/templates/home/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/kodi/Workspace/parky/app/templates/base.html", line 34, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/kodi/Workspace/parky/app/templates/home/index.html", line 10, in block "content"
+    {% block home_app %}{% endblock %}
+  File "/home/kodi/Workspace/parky/app/templates/home/interview/add_interview.html", line 5, in block "home_app"
+    {{ wtf.quick_form(form) }}
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/runtime.py", line 553, in _invoke
+    rv = self._func(*arguments)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 205, in template
+    {{ form_field(field,
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/runtime.py", line 553, in _invoke
+    rv = self._func(*arguments)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 123, in template
+    {{field(class="form-control", **kwargs)|safe}}
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/wtforms/fields/core.py", line 153, in __call__
+    return self.meta.render_field(self, kwargs)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/wtforms/meta.py", line 56, in render_field
+    return field.widget(field, **render_kw)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/wtforms/widgets/core.py", line 287, in __call__
+    for val, label, selected in field.iter_choices():
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/wtforms/fields/core.py", line 451, in iter_choices
+    for value, label in self.choices:
+ValueError: too many values to unpack (expected 2)
+2018-07-11 12:41:27,067 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:65]
+2018-07-11 12:41:57,702 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:65]
+2018-07-11 12:44:18,206 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:65]
+2018-07-11 12:44:21,308 ERROR: Exception on /interview/add [GET] [in /home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -88,20 +72,46 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 227, in decorated_view
-    return current_app.login_manager.unauthorized()
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 165, in unauthorized
-    return redirect(login_url(login_view, request.url))
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 97, in login_url
-    base = url_for(login_view)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1805, in handle_url_build_error
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 228, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kodi/Workspace/parky/app/home/routes.py", line 125, in add_interview
+    return render_template('home/interview/add_interview.html', form=form)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
-    raise value
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/helpers.py", line 323, in url_for
-    force_external=external)
-  File "/home/kodi/anaconda3/lib/python3.6/site-packages/werkzeug/routing.py", line 1768, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kodi/Workspace/parky/app/templates/home/interview/add_interview.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/kodi/Workspace/parky/app/templates/home/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/kodi/Workspace/parky/app/templates/base.html", line 34, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/kodi/Workspace/parky/app/templates/home/index.html", line 10, in block "content"
+    {% block home_app %}{% endblock %}
+  File "/home/kodi/Workspace/parky/app/templates/home/interview/add_interview.html", line 5, in block "home_app"
+    {{ wtf.quick_form(form) }}
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/runtime.py", line 553, in _invoke
+    rv = self._func(*arguments)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 205, in template
+    {{ form_field(field,
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/jinja2/runtime.py", line 553, in _invoke
+    rv = self._func(*arguments)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 123, in template
+    {{field(class="form-control", **kwargs)|safe}}
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/wtforms/fields/core.py", line 153, in __call__
+    return self.meta.render_field(self, kwargs)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/wtforms/meta.py", line 56, in render_field
+    return field.widget(field, **render_kw)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/wtforms/widgets/core.py", line 287, in __call__
+    for val, label, selected in field.iter_choices():
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/wtforms/fields/core.py", line 451, in iter_choices
+    for value, label in self.choices:
+ValueError: not enough values to unpack (expected 2, got 0)

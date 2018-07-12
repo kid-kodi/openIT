@@ -1,32 +1,40 @@
 {% extends "home/index.html" %}
 
 {% block home_app %}
-    <h1>Equipements</h1>
-    <a href="{{ url_for('home.add_equipment') }}">Nouveau</a>
-    <table id="tabl">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Catégorie</th>
-                <th>Marque</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in list %}
-            <tr>
-                <td>{{item.id}}</td>
-                <td>{{item.category.name}}</td>
-                <td>{{item.label.name}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.description}}</td>
-                <td>
-                    <a href="{{ url_for('home.detail_equipment', id=item.id) }}">Detail</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="container">
+
+  <div class="btn-toolbar justify-content-between py-4">
+    <h1>Equipement</h1>
+    <div>
+      <a class="btn btn-success" href="{{ url_for('home.add_equipment') }}">Nouvel equipement</a>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Catégorie</th>
+            <th>Marque</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in list %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.category.name}}</td>
+            <td>{{item.label.name}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>
+                <a href="{{ url_for('home.detail_equipment', id=item.id) }}">Detail</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}

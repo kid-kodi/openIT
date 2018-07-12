@@ -95,6 +95,7 @@ class Interview(db.Model):
     requester = db.Column(db.String(120), index=True)
     description = db.Column(db.String(255))
     date = db.Column(db.String(120), index=True)
+    status = db.Column(db.Integer)
     service = db.Column(db.String(255))
     interviewer = db.Column(db.String(255))
     actions = db.Column(db.String(255))
