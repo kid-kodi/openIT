@@ -46,27 +46,27 @@
             {% endif %}
           </div>
         </nav>
-        <main>
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <div>
-                  {% with messages = get_flashed_messages() %}
-                  {% if messages %}
-                  <ul>
-                      {% for message in messages %}
-                      <li class="text-center py-2">{{ message }}</li>
-                      {% endfor %}
-                  </ul>
-                  {% endif %}
-                  {% endwith %}
-                  {% block content %}{% endblock %}
+        <div>
+            <div class="container">
+                <div class="row  justify-content-md-center">
+                  <div class="col-6">
+                    <div id="flash-message">
+                      {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                      <div>
+                          {% for message in messages %}
+                          <div class="text-center my-2 alert alert-primary">{{ message }}</div>
+                          {% endfor %}
+                      </div>
+                      {% endif %}
+                      {% endwith %}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          {% block body %}
-          {% endblock %}
+        </div>
+        <main>
+          {% block content %}{% endblock %}
         </main>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

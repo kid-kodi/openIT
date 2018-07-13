@@ -4,15 +4,18 @@ from wtforms.validators import DataRequired, Length
 
 
 class InterviewForm(FlaskForm):
-    requester = StringField('Demandeur', validators=[DataRequired()])
-    description = TextAreaField('Description', validators=[Length(min=0, max=140)])
-    interviewer = StringField('Intervenant', validators=[DataRequired()])
-    actions = TextAreaField('Actions effectuée', validators=[Length(min=0, max=140)])
-    date = StringField('Date', validators=[DataRequired()])
     service = SelectField(choices=[], coerce=int, label="Choisir une unité", default=(0, 'Aucun'))
+    requester = StringField('Constat fait par', validators=[DataRequired()])
+    request_date = StringField('Date', validators=[DataRequired()])
+    request_time = StringField('Heure', validators=[DataRequired()])
+    reasons = TextAreaField('Motifs de la demande', validators=[Length(min=0, max=140)])
     equipment = SelectField(choices=[], coerce=int, label="Choisir un equipement", default=(0, 'Aucun'))
     status = SelectField(choices=[(0, 'Aucun'), (1, 'Oui'), (2, 'Non')],
-                         coerce=int, label="Statut de l'équipement", default=(0, 'Aucun'))
+                         coerce=int, label="Matériel à l'arrêt ?", default=(0, 'Aucun'))
+    interviewer = StringField('Intervenant', validators=[DataRequired()])
+    start_date = StringField('Date de debut', validators=[DataRequired()])
+    end_date = StringField('Date de fin', validators=[DataRequired()])
+    actions = TextAreaField('Compte rendu de l\'intervention', validators=[Length(min=0, max=140)])
     submit = SubmitField('Enregistrer')
 
 

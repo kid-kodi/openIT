@@ -1,9 +1,10 @@
 {% extends "home/index.html" %}
+{% set active_page = "interview" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block home_app %}
     <div class="container mt-2">
-      <div class="row">
-        <div class="col-4">
+      <div class="row justify-content-md-center">
+        <div class="col-6">
             <h1>Intervention</h1>
             {{ wtf.quick_form(form) }}
         </div>

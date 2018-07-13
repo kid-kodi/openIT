@@ -1,5 +1,5 @@
 {% extends "home/index.html" %}
-
+{% set active_page = "interview" %}
 {% block home_app %}
     <h1>{{interview.name}}</h1>
     <a href="{{ url_for('home.edit_interview', id=interview.id) }}">Modifier</a>

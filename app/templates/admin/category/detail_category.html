@@ -1,5 +1,5 @@
 {% extends "admin/index.html" %}
-
+{% set active_page = "category" %}
 {% block admin_app %}
     <h1>{{category.name}}</h1>
     <a href="{{ url_for('admin.edit_category', id=category.id) }}">Modifier</a>

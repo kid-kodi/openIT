@@ -1,5 +1,5 @@
 {% extends "home/index.html" %}
-
+{% set active_page = "order" %}
 {% block home_app %}
     <h1>{{order.name}}</h1>
     <a href="{{ url_for('home.edit_order', id=order.id) }}">Modifier</a>

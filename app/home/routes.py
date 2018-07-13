@@ -109,10 +109,14 @@ def add_interview():
     if form.validate_on_submit():
         interview = Interview(requester=form.requester.data,
                               equipment_id=form.equipment.data,
-                              description=form.description.data,
+                              service_id=form.service.data,
+                              reasons=form.reasons.data,
                               interviewer=form.interviewer.data,
                               actions=form.actions.data,
-                              date=form.date.data)
+                              request_date=form.request_date.data,
+                              request_time=form.request_time.data,
+                              start_date=form.start_date.data,
+                              end_date=form.end_date.data)
         db.session.add(interview)
         db.session.commit()
         flash('données enregistrées')
@@ -129,20 +133,30 @@ def edit_interview( id ):
     form.equipment.choices = [(c.id, c.name) for c in Equipment.query.all()]
     if form.validate_on_submit():
         interview.requester = form.requester.data
+        interview.service_id = form.service.data
         interview.equipment_id = form.equipment.data
-        interview.description = form.description.data
+        interview.reasons = form.reasons.data
         interview.interviewer = form.interviewer.data
+        interview.request_date = form.request_date.data
+        interview.request_time = form.request_date.data
         interview.actions = form.actions.data
-        interview.date = form.date.data
+        interview.start_date = form.start_date.data
+        interview.end_date = form.end_date.data
+        interview.status = form.status.data
         db.session.commit()
         flash('données modifiées')
         return redirect(url_for('home.interview'))
     form.requester.data = interview.requester
-    form.equipment.data = interview.equipment
-    form.description.data = interview.description
+    form.equipment.data = interview.equipment_id
+    form.service.data = interview.service_id
+    form.reasons.data = interview.reasons
     form.interviewer.data = interview.interviewer
     form.actions.data = interview.actions
-    form.date.data = interview.date
+    form.request_date.data = interview.request_date
+    form.request_time.data = interview.request_time
+    form.end_date.data = interview.end_date
+    form.start_date.data = interview.start_date
+    form.status.data = interview.status
     return render_template('home/interview/add_interview.html', form=form)
 
 

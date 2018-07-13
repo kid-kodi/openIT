@@ -1,5 +1,5 @@
 {% extends "admin/index.html" %}
-
+{% set active_page = "label" %}
 {% block admin_app %}
     <h1>{{label.name}}</h1>
     <a href="{{ url_for('admin.edit_label', id=label.id) }}">Modifier</a>

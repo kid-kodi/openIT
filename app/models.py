@@ -93,13 +93,16 @@ class Equipment(db.Model):
 class Interview(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     requester = db.Column(db.String(120), index=True)
-    description = db.Column(db.String(255))
-    date = db.Column(db.String(120), index=True)
-    status = db.Column(db.Integer)
-    service = db.Column(db.String(255))
-    interviewer = db.Column(db.String(255))
-    actions = db.Column(db.String(255))
+    service_id = db.Column(db.String(255))
     equipment_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+    reasons = db.Column(db.String(255))
+    interviewer = db.Column(db.String(255))
+    request_date = db.Column(db.String(120))
+    request_time = db.Column(db.String(120))
+    status = db.Column(db.Integer)
+    actions = db.Column(db.String(255))
+    start_date = db.Column(db.String(120))
+    end_date = db.Column(db.String(120))
 
     def __repr__(self):
         return '<Interview {}>'.format(self.name)
