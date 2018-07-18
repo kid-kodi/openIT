@@ -1,10 +1,13 @@
 from app import db
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from .forms import InterviewForm, OrderForm, EquipmentForm
 from flask_login import current_user, login_required
 from app.models import Interview, Order, Equipment, Category, Label, Service
 from datetime import datetime
 from . import bp
+import csv
+import io
+import flask_excel as excel
 
 
 @bp.before_request
@@ -48,6 +51,8 @@ def add_equipment():
                               model=form.model.data,
                               serial=form.serial.data,
                               name=form.name.data,
+                              arrived_at=form.arrived_at.data,
+                              created_by=current_user.id,
                               description=form.description.data)
         db.session.add(equipment)
         db.session.commit()
@@ -71,6 +76,7 @@ def edit_equipment( id ):
         equipment.model = form.model.data
         equipment.serial = form.serial.data
         equipment.name = form.name.data
+        equipment.arrived_at = form.arrived_at.data
         equipment.description = form.description.data
         db.session.commit()
         flash('données modifiées')
@@ -81,6 +87,7 @@ def edit_equipment( id ):
     form.model.data = equipment.model
     form.serial.data = equipment.serial
     form.name.data = equipment.name
+    form.arrived_at.data = equipment.arrived_at
     form.description.data = equipment.description
     return render_template('home/equipment/add_equipment.html', form=form)
 
@@ -90,6 +97,48 @@ def edit_equipment( id ):
 def detail_equipment(id):
     equipment = Equipment.query.get_or_404(id)
     return render_template('home/equipment/detail_equipment.html', equipment=equipment)
+
+
+@bp.route("/equipment/import", methods=['GET', 'POST'])
+@login_required
+def import_equipment():
+    if request.method == 'POST':
+
+        def equipment_init_func(row):
+            c = Equipment()
+            c.category_id = row['category_id']
+            c.label_id = row['label_id']
+            c.service_id = row['service_id']
+            c.model = row['model']
+            c.serial = row['serial']
+            c.name = row['name']
+            c.arrived_at = row['arrived_at']
+            c.description = row['description']
+            c.created_at = datetime.utcnow()
+            c.created_by = current_user.id
+            return c
+
+        request.save_book_to_database(
+            field_name='file', session=db.session,
+            tables=[Equipment],
+            initializers=[equipment_init_func])
+        return redirect(url_for('home.equipment'), code=302)
+    return render_template('home/equipment/import.html', equipment=equipment)
+
+
+@bp.route("/equipment/export", methods=['GET'])
+@login_required
+def export_equipment():
+    list = Equipment.query.all()
+    column_names = ['category_id', 'label_id', 'service_id', 'model', 'serial', 'name', 'arrived_at', 'description']
+    return excel.make_response_from_query_sets(list, column_names, "xls", file_name="equipment_data")
+
+
+@bp.route("/equipment/download", methods=['GET'])
+@login_required
+def download_equipment():
+    return excel.make_response_from_array([['category_id', 'label_id', 'service_id', 'model', 'serial', 'name',
+                                            'arrived_at', 'description']], "xls", file_name="equipment_samples")
 
 
 #routes interview
@@ -222,3 +271,43 @@ def edit_order( id ):
 def detail_order(id):
     order = Order.query.get_or_404(id)
     return render_template('home/order/detail_order.html', order=order)
+
+
+@bp.route("/import", methods=['GET', 'POST'])
+@login_required
+def doimport():
+    if request.method == 'POST':
+
+        def category_init_func(row):
+            c = Category()
+            c.id = row['id']
+            c.name = row['name']
+            c.description = row['description']
+            return c
+
+        request.save_book_to_database(
+            field_name='file', session=db.session,
+            tables=[Category],
+            initializers=[category_init_func])
+        return redirect(url_for('.handson_table'), code=302)
+    return '''
+    <!doctype html>
+    <title>Upload an excel file</title>
+    <h1>Excel file upload (xls, xlsx, ods please)</h1>
+    <form action="" method=post enctype=multipart/form-data><p>
+    <input type=file name=file><input type=submit value=Upload>
+    </form>
+    '''
+
+
+@bp.route("/export", methods=['GET'])
+@login_required
+def doexport():
+    return excel.make_response_from_tables(db.session, [Category], "xls")
+
+
+@bp.route("/handson_view", methods=['GET'])
+@login_required
+def handson_table():
+    return excel.make_response_from_tables(
+        db.session, [Category], 'home/handsontable.html')

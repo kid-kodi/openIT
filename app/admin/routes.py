@@ -1,9 +1,10 @@
 from app import app, db
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from .forms import CategoryForm, LabelForm, ServiceForm
 from flask_login import login_required
 from app.models import Category, Label, Service
 from . import bp
+import flask_excel as excel
 
 
 #routes equipment
@@ -44,7 +45,7 @@ def add_category():
 
 @bp.route('/category/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
-def edit_category( id ):
+def edit_category(id):
     category = Category.query.get_or_404(id)
     form = CategoryForm(obj=category)
     if form.validate_on_submit():
@@ -63,6 +64,39 @@ def edit_category( id ):
 def detail_category(id):
     category = Category.query.get_or_404(id)
     return render_template('admin/category/detail_category.html', category=category)
+
+
+@bp.route("/category/import", methods=['GET', 'POST'])
+@login_required
+def import_category():
+    if request.method == 'POST':
+
+        def category_init_func(row):
+            c = Category(id=row['id'],
+                         name=row['nom'],
+                         description=row['description'])
+            return c
+
+        request.save_book_to_database(
+            field_name='file', session=db.session,
+            tables=[Category],
+            initializers=[category_init_func])
+        return redirect(url_for('admin.category'))
+    return render_template('admin/category/import.html', category=category)
+
+
+@bp.route("/category/export", methods=['GET'])
+@login_required
+def export_category():
+    list = Category.query.all()
+    column_names = ['id', 'name', 'description']
+    return excel.make_response_from_query_sets(list, column_names, "csv", file_name="category")
+
+
+@bp.route("/category/download", methods=['GET'])
+@login_required
+def download_category():
+    return excel.make_response_from_array([["id", "nom", "description"]], "xls", file_name="category")
 
 
 @bp.route('/label')
@@ -88,7 +122,7 @@ def add_label():
 
 @bp.route('/label/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
-def edit_label( id ):
+def edit_label(id):
     label = Label.query.get_or_404(id)
     form = LabelForm(obj=label)
     if form.validate_on_submit():
@@ -107,6 +141,39 @@ def edit_label( id ):
 def detail_label(id):
     label = Label.query.get_or_404(id)
     return render_template('admin/label/detail_label.html', label=label)
+
+
+@bp.route("/label/import", methods=['GET', 'POST'])
+@login_required
+def import_label():
+    if request.method == 'POST':
+
+        def label_init_func(row):
+            c = Label(id=row['id'],
+                      name=row['nom'],
+                      description=row['description'])
+            return c
+
+        request.save_book_to_database(
+            field_name='file', session=db.session,
+            tables=[Label],
+            initializers=[label_init_func])
+        return redirect(url_for('admin.label'), code=302)
+    return render_template('admin/label/import.html', label=label)
+
+
+@bp.route("/label/export", methods=['GET'])
+@login_required
+def export_label():
+    list = Label.query.all()
+    column_names = ['id', 'name', 'description']
+    return excel.make_response_from_query_sets(list, column_names, "xls", file_name="marque_data")
+
+
+@bp.route("/label/download", methods=['GET'])
+@login_required
+def download_label():
+    return excel.make_response_from_array([["id", "nom", "description"]], "xls", file_name="marque_samples")
 
 
 @bp.route('/service')
@@ -151,3 +218,36 @@ def edit_service( id ):
 def detail_service(id):
     service = Service.query.get_or_404(id)
     return render_template('admin/service/detail_service.html', service=service)
+
+
+@bp.route("/service/import", methods=['GET', 'POST'])
+@login_required
+def import_service():
+    if request.method == 'POST':
+
+        def service_init_func(row):
+            c = Service()
+            c.name = row['nom']
+            c.description = row['description']
+            return c
+
+        request.save_book_to_database(
+            field_name='file', session=db.session,
+            tables=[Service],
+            initializers=[service_init_func])
+        return redirect(url_for('admin.service'), code=302)
+    return render_template('admin/service/import.html', service=service)
+
+
+@bp.route("/service/export", methods=['GET'])
+@login_required
+def export_service():
+    list = Service.query.all()
+    column_names = ['name', 'description']
+    return excel.make_response_from_query_sets(list, column_names, "xls", file_name="service_data")
+
+
+@bp.route("/service/download", methods=['GET'])
+@login_required
+def download_service():
+    return excel.make_response_from_array([["nom", "description"]], "xls", file_name="service_samples")

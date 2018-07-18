@@ -4,8 +4,10 @@
 <div class="container">
 
   <div class="btn-toolbar justify-content-between py-4">
-    <h1>Catégorie de matériel</h1>
+    <h3>Catégorie de matériel</h3>
     <div>
+      <a class="btn btn-outline-info" href="{{ url_for('admin.export_category') }}">Exporter des données</a>
+      <a class="btn btn-outline-info" href="{{ url_for('admin.import_category') }}">Importer des données</a>
       <a class="btn btn-success" href="{{ url_for('admin.add_category') }}">Nouvelle catégorie</a>
     </div>
   </div>

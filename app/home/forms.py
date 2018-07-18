@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SelectField, SubmitField
+from wtforms import StringField, TextAreaField, SelectField, DateField, SubmitField
 from wtforms.validators import DataRequired, Length
+from datetime import date
 
 
 class InterviewForm(FlaskForm):
@@ -33,8 +34,9 @@ class EquipmentForm(FlaskForm):
     category = SelectField(choices=[], coerce=int, label="Choisir une categorie")
     label = SelectField(choices=[], coerce=int, label="Choisir une marque")
     service = SelectField(choices=[], coerce=int, label="Choisir une unité")
-    model = StringField('Modèle', validators=[DataRequired()])
-    serial = StringField('Numéro de serie')
     name = StringField('Nom')
-    description = TextAreaField('Description', validators=[Length(min=0, max=140)])
+    model = StringField('Modèle')
+    serial = StringField('Numéro de serie')
+    arrived_at = DateField('Date d\'arrivée', format="%m/%d/%Y")
+    description = TextAreaField('Description')
     submit = SubmitField('Enregistrer')

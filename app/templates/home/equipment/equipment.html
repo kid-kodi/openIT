@@ -6,7 +6,9 @@
   <div class="btn-toolbar justify-content-between py-4">
     <h1>Equipement</h1>
     <div>
-      <a class="btn btn-success" href="{{ url_for('home.add_equipment') }}">Nouvel equipement</a>
+      <a class="btn btn btn-outline-info" href="{{ url_for('home.import_equipment') }}">Importer des données</a>
+      <a class="btn btn btn-outline-info" href="{{ url_for('home.export_equipment') }}">Exporter des données</a>
+      <a class="btn btn-success" href="{{ url_for('home.add_equipment') }}">Nouvel équipement</a>
     </div>
   </div>
 
@@ -17,7 +19,9 @@
             <th>Catégorie</th>
             <th>Marque</th>
             <th>Nom</th>
-            <th>Description</th>
+            <th>Arrivé le</th>
+            <th>Enregistré par</th>
+            <th>Localisation</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -28,7 +32,9 @@
             <td>{{item.category.name}}</td>
             <td>{{item.label.name}}</td>
             <td>{{item.name}}</td>
-            <td>{{item.description}}</td>
+            <td>{{ moment(item.arrived_at).format('LL') }}</td>
+            <td>{{item.user.username}}</td>
+            <td>{{item.service.name}}</td>
             <td>
                 <a href="{{ url_for('home.detail_equipment', id=item.id) }}">Detail</a>
             </td>

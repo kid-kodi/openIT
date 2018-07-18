@@ -3,9 +3,10 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block admin_app %}
     <div class="container mt-2">
-      <div class="row">
+      <div class="row justify-content-md-center">
         <div class="col-4">
-            <h1>Catégorie</h1>
+            <a href="{{ url_for('admin.category') }}">Retour à la liste</a>
+            <h3>Catégorie</h3>
             {{ wtf.quick_form(form) }}
         </div>
       </div>

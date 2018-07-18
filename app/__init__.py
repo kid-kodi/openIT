@@ -9,7 +9,7 @@ from logging.handlers import SMTPHandler, RotatingFileHandler
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-
+import flask_excel as excel
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -20,6 +20,7 @@ login.login_view = 'auth.login'
 mail = Mail(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
+excel.init_excel(app)
 
 from app.errors import bp as errors_bp
 app.register_blueprint(errors_bp)

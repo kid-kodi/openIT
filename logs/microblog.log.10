@@ -1,99 +1,112 @@
-2018-07-07 13:06:20,923 ERROR: Exception on /admin/admin [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-07-17 17:39:46,211 ERROR: Exception on /import [POST] [in /home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1791, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1774, in raise_routing_exception
-    raise request.routing_exception
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/ctx.py", line 336, in match_request
-    self.url_adapter.match(return_rule=True)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1581, in match
-    raise NotFound()
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1170, in _execute_context
+    context)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 506, in do_executemany
+    cursor.executemany(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: category.id
 
-During handling of the above exception, another exception occurred:
+The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1713, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1644, in handle_http_exception
-    return handler(e)
-  File "/home/kodi/Workspace/parky/app/errors/handlers.py", line 7, in not_found_error
-    return render_template('errors/404.html'), 404
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/kodi/Workspace/parky/app/templates/errors/404.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/kodi/Workspace/parky/app/templates/base.html", line 34, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/kodi/Workspace/parky/app/templates/errors/404.html", line 5, in block "content"
-    <p><a href="{{ url_for('index') }}">Back</a></p>
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
     raise value
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'home.index' instead?
-2018-07-07 13:07:52,450 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:65]
-2018-07-07 13:08:07,396 ERROR: Exception on /user/kodi [GET] [in /home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/kodi/Workspace/parky/app/auth/routes.py", line 59, in user
-    return render_template('auth/user.html', user=user, posts=posts)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+  File "/home/kodi/Workspace/openIT/app/home/routes.py", line 288, in doimport
+    initializers=[category_init_func])
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/pyexcel_webio/__init__.py", line 237, in save_book_to_database
+    pe.save_book_as(**params)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/pyexcel/core.py", line 99, in save_book_as
+    return sources.save_book(book, **dest_keywords)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/pyexcel/internal/core.py", line 51, in save_book
+    return _save_any(a_source, book)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/pyexcel/internal/core.py", line 55, in _save_any
+    a_source.write_data(instance)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/pyexcel/plugins/sources/db_sources.py", line 103, in write_data
+    **self._keywords)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/pyexcel/plugins/renderers/sqlalchemy.py", line 56, in render_book_to_stream
+    save_data(importer, to_store, file_type=self._file_type, **keywords)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/pyexcel_io/io.py", line 122, in save_data
+    **keywords
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/pyexcel_io/io.py", line 139, in store_data
+    writer.write(data)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/pyexcel_io/book.py", line 220, in write
+    sheet_writer.close()
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/pyexcel_io/database/importers/sqlalchemy.py", line 72, in close
+    self._native_book.session.commit()
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 153, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 467, in commit
+    self._prepare_impl()
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
+    self.session.flush()
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2254, in flush
+    self._flush(objects)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2380, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 249, in reraise
+    raise value
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2344, in _flush
+    flush_context.execute()
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
+    rec.execute(self)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
+    uow
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 830, in _emit_insert_statements
+    execute(statement, multiparams)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
     raise value.with_traceback(tb)
-  File "/home/kodi/Workspace/parky/app/templates/auth/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/kodi/Workspace/parky/app/templates/base.html", line 34, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/kodi/Workspace/parky/app/templates/auth/user.html", line 19, in block "content"
-    {% include '_post.html' %}
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 58, in get_source
-    return self._get_source_fast(environment, template)
-  File "/home/kodi/Workspace/parky/venv/lib/python3.6/site-packages/flask/templating.py", line 86, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: _post.html
-2018-07-07 13:09:10,357 INFO: Microblog startup [in /home/kodi/Workspace/parky/app/__init__.py:65]
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1170, in _execute_context
+    context)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 506, in do_executemany
+    cursor.executemany(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: category.id [SQL: 'INSERT INTO category (id, name, description) VALUES (?, ?, ?)'] [parameters: ((1, 'News', None), (2, 'Sports', None), (3, 'Game', None))] (Background on this error at: http://sqlalche.me/e/gkpj)
+2018-07-17 17:40:38,485 ERROR: Exception on /handson_view [GET] [in /home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/kodi/anaconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kodi/Workspace/openIT/app/home/routes.py", line 310, in handson_table
+    db.session, [Category, Post], 'home/handsontable.html')
+NameError: name 'Post' is not defined
+2018-07-17 17:41:05,855 INFO: Microblog startup [in /home/kodi/Workspace/openIT/app/__init__.py:66]
