@@ -96,3 +96,4 @@ Traceback (most recent call last):
 sqlalchemy.exc.StatementError: (builtins.TypeError) SQLite DateTime type only accepts Python datetime and date objects as input. [SQL: 'INSERT INTO equipment (category_id, label_id, service_id, model, serial, name, arrived_at, description, created_at, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: [{'name': 'DELL-ASSURMI1', 'description': 'Pentium 4', 'serial': '7M7ZY0J', 'created_by': 1, 'category_id': 1, 'model': 'VOSTRO 10', 'service_id': 1, 'label_id': 32, 'arrived_at': '05/02/2017', 'created_at': datetime.datetime(2018, 7, 18, 13, 14, 56, 445381)}]]
 2018-07-18 15:15:24,608 INFO: Microblog startup [in /home/kodi/Workspace/openIT/app/__init__.py:66]
 2018-07-18 18:54:34,369 INFO: Microblog startup [in /home/kodi/Workspace/openIT/app/__init__.py:66]
+2018-07-19 01:47:25,262 INFO: Microblog startup [in /home/kodi/Workspace/openIT/app/__init__.py:77]

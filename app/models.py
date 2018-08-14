@@ -4,7 +4,6 @@ from hashlib import md5
 from datetime import datetime
 from app import db, login
 from flask_login import UserMixin
-from app import app
 import jwt
 
 
